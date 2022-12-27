@@ -5,18 +5,21 @@ import List from './components/List'
 
 class App extends Component {
   state = {
-    userList: []
+    userList: [],
+    isFirst: true,
+    isLoading: false,
+    errMsg: ''
   }
 
-  saveUserList = (list) => {
-    this.setState({userList: list})
+  updateAppState = (state) => {
+    this.setState(state)
   }
 
   render() {
     const { userList } = this.state
     return (
       <div className="container">
-        <Search saveUserList={this.saveUserList}/>
+        <Search updateAppState={this.updateAppState}/>
         <List userList={userList}/>
       </div>
     )

@@ -4,11 +4,13 @@ import axios from 'axios'
 class Search extends Component {
   searchUser = () => {
     const {value} = this.inputElement
+    this.props.updateAppState({isFirst: false, isLoading: true})
     axios.get(`https://api.github.com/search/users?q=${value}`).then(res => {
       console.log('res:', res.data)
-      this.props.saveUserList(res.data.items)
+      this.props.updateAppState({isLoading: false, userList: res.data.items})
     }).catch(err => {
       console.log('err:', err)
+      this.props.updateAppState({isLoading: false, errMsg: err.message})
     })
   }
 
