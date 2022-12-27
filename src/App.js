@@ -13,10 +13,11 @@ class App extends Component {
   }
 
   render() {
+    const { userList } = this.state
     return (
       <div className="container">
         <Search saveUserList={this.saveUserList}/>
-        <List/>
+        <List userList={userList}/>
       </div>
     )
   }

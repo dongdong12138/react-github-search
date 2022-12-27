@@ -3,38 +3,21 @@ import './index.css'
 
 class List extends Component {
   render() {
+    const { userList } = this.props
     return (
       <div className="row">
-        <div className="card">
-          <a href="https://github.com/reactjs" target="_blank">
-            <img src="https://avatars.githubusercontent.com/u/6412038?v=3" alt="avatar" style={{width: '100px'}}/>
-          </a>
-          <p className="card-text">reactjs</p>
-        </div>
-        <div className="card">
-          <a href="https://github.com/reactjs" target="_blank">
-            <img src="https://avatars.githubusercontent.com/u/6412038?v=3" alt="avatar" style={{width: '100px'}}/>
-          </a>
-          <p className="card-text">reactjs</p>
-        </div>
-        <div className="card">
-          <a href="https://github.com/reactjs" target="_blank">
-            <img src="https://avatars.githubusercontent.com/u/6412038?v=3" alt="avatar" style={{width: '100px'}}/>
-          </a>
-          <p className="card-text">reactjs</p>
-        </div>
-        <div className="card">
-          <a href="https://github.com/reactjs" target="_blank">
-            <img src="https://avatars.githubusercontent.com/u/6412038?v=3" alt="avatar" style={{width: '100px'}}/>
-          </a>
-          <p className="card-text">reactjs</p>
-        </div>
-        <div className="card">
-          <a href="https://github.com/reactjs" target="_blank">
-            <img src="https://avatars.githubusercontent.com/u/6412038?v=3" alt="avatar" style={{width: '100px'}}/>
-          </a>
-          <p className="card-text">reactjs</p>
-        </div>
+        {
+          userList.map(item => {
+            return (
+              <div key={item.id} className="card">
+                <a href={item.html_url} target="_blank">
+                  <img src={item.avatar_url} alt="avatar" style={{width: '100px'}}/>
+                </a>
+                <p className="card-text">{item.login}</p>
+              </div>
+            )
+          })
+        }
       </div>
     )
   }
