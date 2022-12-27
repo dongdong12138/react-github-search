@@ -16,11 +16,10 @@ class App extends Component {
   }
 
   render() {
-    const { userList } = this.state
     return (
       <div className="container">
         <Search updateAppState={this.updateAppState}/>
-        <List userList={userList}/>
+        <List {...this.state}/>
       </div>
     )
   }
