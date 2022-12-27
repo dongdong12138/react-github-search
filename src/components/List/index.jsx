@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PubSub from 'pubsub-js'
 import './index.css'
 
 class List extends Component {
@@ -7,6 +8,16 @@ class List extends Component {
     isFirst: true,
     isLoading: false,
     errMsg: ''
+  }
+
+  componentDidMount() {
+    this.token = PubSub.subscribe('updateState', (msg, state) => {
+      this.setState(state)
+    })
+  }
+
+  componentWillUnmount() {
+    PubSub.unsubscribe(this.token)
   }
 
   render() {
