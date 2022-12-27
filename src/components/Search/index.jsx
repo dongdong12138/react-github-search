@@ -6,6 +6,7 @@ class Search extends Component {
     const {value} = this.inputElement
     axios.get(`https://api.github.com/search/users?q=${value}`).then(res => {
       console.log('res:', res.data)
+      this.props.saveUserList(res.data.items)
     }).catch(err => {
       console.log('err:', err)
     })

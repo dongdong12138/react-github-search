@@ -1,13 +1,25 @@
+import React, { Component } from 'react'
 import Search from './components/Search'
 import List from './components/List'
 
-function App() {
-  return (
-    <div className="container">
-      <Search />
-      <List />
-    </div>
-  )
+
+class App extends Component {
+  state = {
+    userList: []
+  }
+
+  saveUserList = (list) => {
+    this.setState({userList: list})
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <Search saveUserList={this.saveUserList}/>
+        <List/>
+      </div>
+    )
+  }
 }
 
 export default App
