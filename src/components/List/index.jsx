@@ -2,8 +2,15 @@ import React, { Component } from 'react'
 import './index.css'
 
 class List extends Component {
+  state = {
+    userList: [],
+    isFirst: true,
+    isLoading: false,
+    errMsg: ''
+  }
+
   render() {
-    const {userList, isFirst, isLoading, errMsg} = this.props
+    const {userList, isFirst, isLoading, errMsg} = this.state
     return (
       <div className="row">
         {
