@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class Search extends Component {
   searchUser = () => {
-    console.log(this.inputElement.value)
+    const {value} = this.inputElement
+    axios.get(`https://api.github.com/search/users?q=${value}`).then(res => {
+      console.log('res:', res.data)
+    }).catch(err => {
+      console.log('err:', err)
+    })
   }
+
   render() {
     return (
       <section className="jumbotron">
